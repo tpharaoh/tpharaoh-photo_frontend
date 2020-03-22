@@ -6,9 +6,10 @@
                 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
                     <h1>Blog</h1>
                     <hr>
-                    <form @submit.prevent="saveDeviceType(item)">
+                    <form @submit.prevent="saveblog(item)">
                         <form-input label="Title" :item="item" property="title" :errors="errors" @input="updateValue"></form-input>                        
-                        <form-textarea label="Body" :item="item" property="mainbody" :errors="errors" @input="updateValue"></form-textarea>                        
+                        <!-- <form-textarea label="Body" :item="item" property="mainbody2" :errors="errors" @input="updateValue"></form-textarea>     -->
+                        <wysiwyg v-model="mainbody" id="mainbody" @blur="updateValue" @mouseleave="alert('ok')" />                    
                         <form-select label="Tags" :item="tags" property="tags" @input="updateArray" :errors="errors" :multiple="true"></form-select>
                         <button class="btn btn-outline-info float-right" type="submit">Save</button>
                     </form>
@@ -24,19 +25,22 @@
         </div>
     </div>
 </template>
-
+<style scoped>
+@import "~vue-wysiwyg/dist/vueWysiwyg.css";
+</style>
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import FormInput from '../components/FormInput'
 import FormSelect from '../components/FormSelect'
-import FormTextarea from '../components/FormTextarea'
+// import FormTextarea from '../components/FormTextarea'
 // import axios from '../../interceptor'
 
 export default {
-    components: { FormInput,FormTextarea,FormSelect },
+    components: { FormInput,FormSelect },
     data() {
         return {
-            item: {}
+            item: {},
+            mainbody:''
         }
     },
     props: {
@@ -60,7 +64,7 @@ export default {
     methods: {
         ...mapActions({
             getItems: 'blog/getItems',
-            deviceTypeCreate: 'blog/create',
+            blogCreate: 'blog/create',
             removeItem: 'blog/remove',
             getTags: 'tags/getItems'
         }),
@@ -74,15 +78,15 @@ export default {
         },
         updateArray(property, value) {
             this.$store.commit('blog/UPDATE_ITEM', { [property]: [value] })
-            console.log(property);
-            console.log(value);
         },
         updateValue(property, value) {
             this.$store.commit('blog/UPDATE_ITEM', { [property]: value })
         },
-        saveDeviceType() {
+        saveblog() {
             // console.log(this.item.name)
-            this.deviceTypeCreate()
+
+            this.$store.commit('blog/UPDATE_ITEM', { ['mainbody']: this.mainbody })
+            this.blogCreate()
                 .then(() => {
                     this.$toastr.s('saved')
                     this.getItems()
