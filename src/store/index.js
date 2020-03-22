@@ -3,8 +3,8 @@ import Vuex from 'vuex'
 
 import general from './modules/general/'
 import auth from './modules/auth'
-import device_types from './modules/device_types'
-import inventory from './modules/inventory'
+import tags from './modules/tags'
+import blog from './modules/blog'
 
 Vue.use(Vuex)
 
@@ -18,7 +18,7 @@ export default new Vuex.Store({
   modules: {
     general,
     auth,
-    device_types,
-    inventory
+    tags,
+    blog
   }
 })

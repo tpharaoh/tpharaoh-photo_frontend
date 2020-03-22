@@ -31,10 +31,10 @@
         Sign in
       </button>
 
-      <p>
+      <!-- <p>
         Don't have account yet?
         <router-link :to="{ name: 'Register' }">Sign up</router-link>
-      </p>
+      </p> -->
     </form>
   </div>
 </template>

@@ -54,7 +54,7 @@ export const actions = {
       throw data
     },
     getItems({ commit }) {
-      const url = process.env.VUE_APP_API_URL + '/api/device_types'
+      const url = process.env.VUE_APP_API_URL + '/api/blogs'
   
       return axios
         .get(url)
@@ -64,7 +64,7 @@ export const actions = {
         })
     },
     getItem({ commit }, id) {
-      const url = process.env.VUE_APP_API_URL + '/api/device_types/' + id
+      const url = process.env.VUE_APP_API_URL + '/api/blogs/' + id
   
       return axios
         .get(url)
@@ -74,7 +74,7 @@ export const actions = {
         })
     },
     create({ state, dispatch }) {
-      const url = process.env.VUE_APP_API_URL + '/api/device_types'
+      const url = process.env.VUE_APP_API_URL + '/api/blogs'
       console.log('s')
       console.log(state.item)
       return axios.post(url, state.item).catch(e => {
@@ -82,14 +82,14 @@ export const actions = {
       })
     },
     update({ state, dispatch }) {
-      const url = process.env.VUE_APP_API_URL + '/api/device_types/' + state.item.id
+      const url = process.env.VUE_APP_API_URL + '/api/blogs/' + state.item.id
   
       return axios.put(url, state.item).catch(e => {
         dispatch('processErrors', e.response.data)
       })
     },
     remove({ state }, id) {
-      const url = process.env.VUE_APP_API_URL + '/api/device_types/' + id
+      const url = process.env.VUE_APP_API_URL + '/api/blogs/' + id
   
       return axios.delete(url, state.item)
     },
