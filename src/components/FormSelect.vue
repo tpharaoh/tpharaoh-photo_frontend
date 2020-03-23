@@ -1,7 +1,7 @@
 <template>
   <div>
     <label :for="property" class="sr-only">{{ label }}</label>
-    <select :id="property" class="form-control mb-1" @click="$emit('input', property, $event.target.value)" multiple=true>
+    <select :id="property" class="form-control mb-1" @click="$emit('input', property, $event.target.value)">
     
     <option v-for="(tag) in item" :key="tag.id"
       :value="'/api/tags/'+tag['id']"

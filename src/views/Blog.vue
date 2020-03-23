@@ -15,11 +15,14 @@
                     </form>
                 </div>                
                 <div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
-                    <ul>
+                    <div class="row" v-for="(item)  in items" :key="item.id">
+                        <span class="col-sm-3 text-left align-top">{{item.title}}</span><span class="col-sm-7 text-left" v-html="item.mainbody"></span><span class="col-sm-2"><button type="button" class="btn btn-outline-warning mr-1" @click="remove(item.id)">Remove</button></span>
+                    </div>
+                    <!-- <ul>
                         <li v-for="(item)  in items" :key="item.id">{{item.title}} 
                             <button type="button" class="btn btn-outline-warning mr-1" @click="remove(item.id)">Remove</button>
                         </li>
-                    </ul>
+                    </ul> -->
                 </div>
             </div>
         </div>
