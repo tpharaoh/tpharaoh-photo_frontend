@@ -61,7 +61,7 @@ export default {
         .dispatch('auth/login', this.credentials)
         .then(() => {
                 this.$toastr.s('You are successfully logged in')
-                this.$router.push({ name: 'About' })
+                this.$router.push({ name: 'Photo' })
         })
         .catch(() => {
             // this.$toastr.e('You are successfully logged in')

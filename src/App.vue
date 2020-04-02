@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> | 
+    <div id="nav" v-if="username">
+      <!-- <router-link to="/">Home</router-link> |
+      <router-link to="/about">About</router-link> |  -->
       <nav v-if="username">
+        
       <router-link to="/photo">Photo</router-link> | 
       <router-link to="/blog">Blog</router-link> | 
       <router-link to="/tag">Tag</router-link> | 
+        
+      <a class="btn btn-outline-primary"  href="#" @click.prevent="SignOut" v-if="username">{{username}} Logout</a>
       </nav>
-     <a class="btn btn-outline-primary" href="#" @click.prevent="SignOut" v-if="username">{{username}} Logout</a>
-      <router-link to="/login" class="btn btn-outline-primary" v-if="!username">Login</router-link>
 
     </div>
     <router-view/>
@@ -60,7 +61,7 @@ export default {
   methods: {
     SignOut() {
       this.$store.dispatch('auth/logout')
-      this.$router.push('Login')
+      this.$router.push('/')
     }
   }
 }

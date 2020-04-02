@@ -5,6 +5,9 @@ import store from '../store'
 import Login from '../views/Login.vue'
 import Tag from '../views/Tag.vue'
 import Blog from '../views/Blog.vue'
+import Photo from '../views/Photo.vue'
+import Show from '../views/Show.vue'
+// import ViewBlog from '../views/ViewBlog.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +24,16 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  },
+  {
+    path: '/viewBlog',
+    name: 'ViewBlog',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ViewBlog.vue')
+  },
+  {
+    path: '/portfolio',
+    name: 'Portfolio',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Portfolio.vue')
   },
   {
     path: '/login',
@@ -41,6 +54,22 @@ const routes = [
     component: Blog,
     meta: {
       requiresAuth: true
+    }
+  },
+  {
+    path: '/photo',
+    name: 'Photo',
+    component: Photo,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/show/:id',
+    name: 'Show',
+    component: Show,
+    meta: {
+      requiresAuth: false
     }
   }
 ]

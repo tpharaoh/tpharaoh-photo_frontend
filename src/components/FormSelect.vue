@@ -1,14 +1,13 @@
 <template>
   <div>
     <label :for="property" class="sr-only">{{ label }}</label>
-    <select :id="property" class="form-control mb-1" @click="$emit('input', property, $event.target.value)">
-    
+    <select :id="property" class="form-control mb-1" @blur="$emit('input', property, $event.target.value)">
+    <option disabled selected>Select {{property}}</option>
     <option v-for="(tag) in item" :key="tag.id"
       :value="'/api/tags/'+tag['id']"
       type="text"
       class="form-control mb-1"
       :placeholder="label"
-      autofocus
     >{{tag.name}}</option>
     </select>
     <div v-if="isInvalid(property)" class="invalid">
