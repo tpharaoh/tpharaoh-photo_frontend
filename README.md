@@ -1,4 +1,6 @@
-# hanna_front
+Point the .env to the API backend
+put the following line in the .env file with your domain
+VUE_APP_API_URL='https://api.album.com'
 
 ## Project setup
 ```
