@@ -9,9 +9,12 @@
         <!-- <strong>Album</strong> -->
       </a>
       <div class="d-none d-lg-block d-xl-block">
-      <a href="/">Home</a> | <a href="/viewBlog">Blog</a> | <a href="/portfolio">Portfolio</a> | </div>
-<a href="/login" class="search-btn" v-if="!username"><i class="fa fa-user"></i></a>
-                             <a class="btn btn-outline-primary"  href="#" @click.prevent="SignOut" v-if="username">{{username}} Logout</a>
+        <a href="/">Home</a> | 
+        <a href="/viewBlog">Blog</a> | 
+        <a href="/portfolio">Portfolio</a> | 
+      </div>
+      <a href="/login" class="search-btn" v-if="!username"><i class="fa fa-user"></i></a>
+      <a class="btn btn-outline-primary"  href="#" @click.prevent="SignOut" v-if="username">{{username}} Logout</a>
     </div>
   </div>
 </header>
